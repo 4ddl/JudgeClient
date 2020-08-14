@@ -1,5 +1,5 @@
 from multiprocessing import Pool
-from judge_client.core.config import Languages
+from .languages import Languages
 
 
 class Runner:
@@ -12,3 +12,6 @@ class Runner:
         self.work_dir = work_dir
         self.max_cpu_time = max_cpu_time
         self.max_memory = max_memory
+
+    def run(self, work_dir: str, language: Languages):
+        pass

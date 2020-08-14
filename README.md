@@ -16,4 +16,5 @@ git clone https://github.com/4ddl/ddlc.git && cd ddlc && mkdir build && cd build
 PATH: 构建工具路径, 默认为 /usr/bin
 WORK_DIR: 代码编译运行工作目录, 默认为 /tmp/judge
 CELERY_CONFIG: Celery配置包名, 例如 package.setting
+DEBUG: Debug模式, 此模式下不会清理编译目录
 ```

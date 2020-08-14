@@ -9,7 +9,7 @@ os.environ.setdefault("WORK_DIR", '/opt/project/judge')
 os.environ.setdefault("DEBUG", '1')
 
 from judge_client.core.judge import JudgeClient
-from judge_client.core.config import Languages
+from judge_client.core.languages import Languages
 
 code = """
 #include<stdio.h>
