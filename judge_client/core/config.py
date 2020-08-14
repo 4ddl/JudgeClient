@@ -1,5 +1,8 @@
-from enum import Enum
 import os
+from enum import Enum
+from .sandbox import UNLIMITED
+
+DEBUG_MODE = os.getenv("DEBUG", "0") == '1'
 
 
 class Languages(Enum):
@@ -18,7 +21,10 @@ class Languages(Enum):
             'max_real_time': 5000,
             'max_memory': 128 * 1024 * 1024
         },
-        'run': '{exec_path}'
+        'run': {
+            'cmd': '{exec_path}',
+            "seccomp_rule": "c_cpp"
+        }
     }
 
     CPP = {
@@ -26,12 +32,15 @@ class Languages(Enum):
         'code_file': 'main.cpp',
         'exec_file': 'main.o',
         'build': {
-            'cmd': 'g++ {code_path} -o {exec_path} -O2 -Wall -lm --static -DONLINE_JUDGE',
+            'cmd': '/usr/bin/g++ {code_path} -o {exec_path} -O2 -Wall -lm --static -DONLINE_JUDGE',
             'max_cpu_time': 3000,
             'max_real_time': 5000,
             'max_memory': 128 * 1024 * 1024
         },
-        'run': '{exec_path}'
+        'run': {
+            'cmd': '{exec_path}',
+            "seccomp_rule": "c_cpp"
+        }
     }
 
     JAVA = {
@@ -39,12 +48,15 @@ class Languages(Enum):
         'code_file': 'Main.java',
         'exec_file': 'Main',
         'build': {
-            'cmd': 'javac {code_path} -d {work_dir}',
+            'cmd': '/usr/bin/javac {code_path} -d {work_dir}',
             'max_cpu_time': 3000,
             'max_real_time': 5000,
-            'max_memory': -1
+            'max_memory': UNLIMITED
         },
-        'run': 'java {exec_path}'
+        'run': {
+            'cmd': '/usr/bin/java {exec_path}',
+            "seccomp_rule": None
+        }
     }
 
     PYTHON = {
@@ -52,17 +64,21 @@ class Languages(Enum):
         'code_file': 'main.py',
         'exec_file': '__pycache__/main.cpython-38.pyc',
         'build': {
-            'cmd': 'python3 -m py_compile {code_path}',
+            'cmd': '/usr/local/bin/python3 -m py_compile {code_path}',
             "max_cpu_time": 3000,
             "max_real_time": 5000,
             "max_memory": 128 * 1024 * 1024,
         },
-        'run': 'python3 {exec_path}'
+        'run': {
+            'cmd': '/usr/bin/python3 {exec_path}',
+            "seccomp_rule": None
+        }
     }
 
     NODEJS = {
         'index': 4,
         'code_file': 'main.js',
         'exec_file': 'main.js',
-        'run': 'node {exec_path}'
+        'run': '/usr/bin/node {exec_path}',
+        "seccomp_rule": None
     }

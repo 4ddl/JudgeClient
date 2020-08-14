@@ -1,6 +1,6 @@
 venv/
 .idea/
-demo/
 __pycache__/
 dist/
 eggs/
+judge/
