@@ -8,7 +8,7 @@
 构建方法
 ```
 sudo apt-get install libseccomp-dev
-git clone https://github.com/4ddl/ddlc.git && cd ddlc && mkdir build && cd build && cmake .. && make && sudo make install
+git clone https://github.com//WUSTOnlineJudge/Judger/archive/newnew.zip && cd Judger-newnew && mkdir build && cd build && cmake .. && make && sudo make install
 ```
 
 ## 环境变量
