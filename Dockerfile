@@ -17,5 +17,5 @@ RUN apt-get install -y gcc cmake wget unzip libseccomp-dev
 # 判题环境
 RUN pip3 install celery redis -i http://pypi.douban.com/simple/ --trusted-host=pypi.douban.com/simple ipython
 WORKDIR /tmp
-RUN wget -O ddlc.zip http://github.com/QingdaoU/Judger/archive/newnew.zip
-RUN unzip ddlc.zip && cd Judger-newnew && mkdir build && cd build && cmake .. && make && make install
+RUN wget -O Judger.zip https://github.com//WUSTOnlineJudge/Judger/archive/newnew.zip
+RUN unzip Judger.zip && cd Judger-newnew && mkdir build && cd build && cmake .. && make && make install
